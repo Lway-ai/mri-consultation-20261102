@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow,noarchive"><meta name="referrer" content="no-referrer"><title>MRI · 影像会诊</title><link rel="stylesheet" href="style.css"></head>
+<body><header><span class="brand">MRI<span class="dot">●</span></span><div><h1>脑部影像会诊</h1><p>MRI / MRA · 10 个序列 · 320 幅</p></div><span class="badge">加密影像</span></header>
+<main><aside><h2>检查序列 <span>10</span></h2><nav id="series"></nav><p class="aside-note">保留原始 16 位像素<br>滚轮或 ↑ ↓ 翻片<br>空格播放 / 暂停</p></aside>
+<section class="workspace"><div class="viewhead"><div><span class="eyebrow">IMAGE VIEWER</span><h2 id="title">打开影像</h2></div><span id="counter">— / —</span></div>
+<div id="viewport" tabindex="0" aria-label="医学影像，滚轮翻片"><canvas id="canvas"></canvas><div id="status" role="status">正在初始化…</div><div class="overlay" id="details"></div><div class="orientation" id="orientation"></div></div>
+<div class="timeline"><button id="prev" aria-label="上一幅">←</button><input id="slice" aria-label="图像序号" type="range" min="0" max="0" value="0"><button id="next" aria-label="下一幅">→</button></div>
+<div class="toolbar"><button id="play">▶ 自动播放</button><label>速度 <select id="fps"><option value="3">3 帧/秒</option><option value="6" selected>6 帧/秒</option><option value="12">12 帧/秒</option></select></label><button id="reset">重置显示</button><button id="invert">反色</button><button id="full">全屏</button></div>
+<div class="adjust"><label>窗位 <input id="wc" type="number" step="10"></label><label>窗宽 <input id="ww" type="number" min="1" step="10"></label><label>缩放 <input id="zoom" type="range" min="50" max="400" value="100"><span id="zoomText">100%</span></label></div>
+<p class="hint">拖动影像平移 · 窗宽窗位基于原始像素调整 · 未进行重采样或自动增强</p>
+<details><summary>阅片意见记录</summary><p>可填写意见并复制，通过你们现有的联系方式发回。内容只保存在当前页面内存中。</p><textarea id="notes" placeholder="例如：序列 08，第 12 幅；建议结合临床症状及正式影像报告…"></textarea><button id="copy">复制意见与当前图像编号</button><span id="copyStatus" role="status"></span></details>
+<footer>数据完整性：第 02 序列第 99 幅原始 DICOM 数据不完整，已标记缺片；其余 319 幅保留原始像素。用于向医生提供影像参考，诊断请结合完整 DICOM、正式报告与临床资料。分享链接含解锁密钥，请仅发给参与会诊的医生。</footer></section></main>
+<dialog id="unlock"><form method="dialog"><h2>解锁影像</h2><p>请打开包含完整密钥的分享链接，或输入单独收到的密钥。</p><input id="keyInput" aria-label="影像密钥" autocomplete="off" spellcheck="false"><button id="unlockButton" value="unlock">解锁</button><p id="unlockError" role="alert"></p></form></dialog><script src="app.js"></script></body></html>
